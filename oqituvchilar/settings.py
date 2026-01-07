@@ -1,30 +1,17 @@
-"""
-Django settings for oqituvchilar project.
-"""
-
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 SECRET_KEY = 'django-insecure-_&$)rk9x&^cs708$2twi1yo1^oppph-!5u(ddla39e4ldlh_x&'
 
-DEBUG = False
+DEBUG = True  # lokalda test qilish uchun True, deploy qilganda False qilamiz
 
-
-ALLOWED_HOSTS = [
-    'oqituvchilar.onrender.com',
-    'localhost',
-    '127.0.0.1',
-]
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'oqituvchilar-2.onrender.com']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://oqituvchilar.onrender.com',
-    'http://localhost:5173',
+    'https://oqituvchilar-2.onrender.com',  # ✅ server domeni
+    'http://localhost:5173',                 # ✅ frontend lokal
 ]
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -34,15 +21,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'corsheaders',      # 👈 CORS
+    'corsheaders',
     'rest_framework',
     'drf_yasg',
     'api',
 ]
 
-
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',   # 👈 ENG YUQORIDA
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,9 +38,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 ROOT_URLCONF = 'oqituvchilar.urls'
-
 
 TEMPLATES = [
     {
@@ -72,9 +56,7 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'oqituvchilar.wsgi.application'
-
 
 DATABASES = {
     'default': {
@@ -83,7 +65,6 @@ DATABASES = {
     }
 }
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -91,12 +72,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
-
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -104,17 +83,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 # ================== CORS SETTINGS ==================
 
 CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',          # 👈 frontend lokal
-    'https://oqituvchilar.onrender.com',
+    'http://localhost:5173',
+    'https://oqituvchilar-2.onrender.com',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -137,10 +114,8 @@ CORS_ALLOW_METHODS = [
     'PUT',
 ]
 
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ]
 }
-
