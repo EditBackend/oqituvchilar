@@ -6,12 +6,17 @@ SECRET_KEY = 'django-insecure-_&$)rk9x&^cs708$2twi1yo1^oppph-!5u(ddla39e4ldlh_x&
 
 DEBUG = True  # lokalda test qilish uchun True, deploy qilganda False qilamiz
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'oqituvchilar-2.onrender.com']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'oqituvchilar-4.onrender.com',  # 👈 SHUNI QO‘SH
+]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://oqituvchilar-2.onrender.com',  # ✅ server domeni
-    'http://localhost:5173',                 # ✅ frontend lokal
+    'https://oqituvchilar-4.onrender.com',
+    'http://localhost:5173',
 ]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
